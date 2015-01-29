@@ -1,0 +1,15 @@
+<html>
+
+    <body>
+
+        <span th:remove="tag" th:each="phone:${model.phones}">
+            <span th:remove="tag" th:each="group:${phone.featureGroups}">
+                <span th:remove="tag" th:each="group:${group.features}">
+                    <span>Man, this is slow..</span>
+                </span>
+            </span>
+        </span>
+
+    </body>
+
+</html>
