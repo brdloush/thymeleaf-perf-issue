@@ -8,6 +8,12 @@ So in the end of the day, thymeleaf template is supposed to process out 30 * 5 *
 
 **The results?** (i7-3820 @ 3.6Ghz)
 
-Total time spent processing 2868 ms, **Processing of single page takes 286 ms**
+Total time spent processing 2868 ms, **Processing of single page takes 286 ms**.
 
-Quick profiler snapshot says that most of the time was spent in NestableNode.computeNextChild method. Self time of this method ie 51%, 36% is spent in IdentityCounter.isAlreadyCounted
+Quick profiler snapshot says that most of the time was spent in NestableNode.computeNextChild method. Self time of this method ie 51%, 36% is spent in IdentityCounter.isAlreadyCounted.
+
+One more interesting thing is the number of executions of isAlreadyCounted method. For single iteration (30 * 5 * 10 = 1500 items) this method is called 26-million times.
+
+```
+org.thymeleaf.util.IdentityCounter.isAlreadyCounted(Object)	42.377525	715 ms (42.4%)	715 ms	26,130,998
+```
