@@ -31,14 +31,16 @@ public class TestPerfProblem extends TestCase {
     	runTest("DRY RUN", "thymeleaf-template", initializedEngine, 100);
     	runTest("MEASURING RUN", "thymeleaf-template", initializedEngine, 100);
     	
-    	runTest("DRY RUN", "thymeleaf-template-noremove", initializedEngine,100);
-    	runTest("MEASURING RUN", "thymeleaf-template-noremove", initializedEngine,100);
+    	runTest("DRY RUN", "thymeleaf-template-noremove", initializedEngine,500);
+    	runTest("MEASURING RUN", "thymeleaf-template-noremove", initializedEngine,500);
     	
     }
 
 	private void runTest(String testName, String template, TemplateEngine templateEngine, int runTestIterations) {
-		  // prepare dummy model -> just linked POJOs: 30 phones, each has 5 feature groups, each group has 10 features.
-        int numPhones = 30;
+		System.out.println("Running test: "+testName+" with template : "+template);
+
+		// prepare dummy model -> just linked POJOs: 30 phones, each has 5 feature groups, each group has 10 features.
+		int numPhones = 30;
         int numFeatureGroupsPerPhone = 5;
         int numFeaturesInGroup = 10;
 
@@ -74,8 +76,9 @@ public class TestPerfProblem extends TestCase {
         sw.stop();
 
         // printout results
-        System.out.println("*** "+testName);
-        System.out.println("Total time spent processing "+ sw.getTotalTimeMillis()+" ms");
-        System.out.println("Processing of single page takes "+ (sw.getTotalTimeMillis()/runTestIterations)+" ms");
+        System.out.println("- Total time spent processing "+runTestIterations+" iterations: "+ sw.getTotalTimeMillis()+" ms");
+        System.out.println("- Processing of single page takes: "+ (sw.getTotalTimeMillis()/runTestIterations)+" ms");
+        System.out.println("Test finished: "+testName+" with template : "+template+"\n\n");
+
 	}
 }
