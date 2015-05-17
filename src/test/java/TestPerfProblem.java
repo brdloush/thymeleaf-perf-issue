@@ -6,6 +6,7 @@ import net.brdloush.thymeleaf.perfissue.Phone;
 
 import org.springframework.util.StopWatch;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.AbstractContext;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.context.IContext;
 import org.thymeleaf.standard.StandardDialect;
@@ -31,8 +32,8 @@ public class TestPerfProblem extends TestCase {
     	runTest("DRY RUN", "thymeleaf-template", initializedEngine, 100);
     	runTest("MEASURING RUN", "thymeleaf-template", initializedEngine, 100);
     	
-    	runTest("DRY RUN", "thymeleaf-template-noremove", initializedEngine,500);
-    	runTest("MEASURING RUN", "thymeleaf-template-noremove", initializedEngine,500);
+    	runTest("DRY RUN", "thymeleaf-template-noremove", initializedEngine,100);
+    	runTest("MEASURING RUN", "thymeleaf-template-noremove", initializedEngine,100);
     	
     }
 
@@ -61,8 +62,8 @@ public class TestPerfProblem extends TestCase {
 
 
         // feed dummy model to context
-        IContext context = new Context();
-        context.getVariables().put("model", model);
+        Context context = new Context();
+        context.setVariable("model", model);
 
         // perform tests
         StopWatch sw = new StopWatch(testName);
@@ -72,6 +73,7 @@ public class TestPerfProblem extends TestCase {
         sw.start();
         for (int i=0;i<runTestIterations;i++) {
         	processed = templateEngine.process(template, context);
+            int a=0;
         }
         sw.stop();
 
