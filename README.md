@@ -32,6 +32,11 @@ or, for Thymeleaf 3.0.0-SNAPSHOT:
 ```
 mvn -Dthymeleaf=3.0.0-SNAPSHOT clean test
 ```
+or, for Thymeleaf 3.0.0.BETA01:
+```
+mvn -Dthymeleaf=3.0.0.BETA01 clean test
+```
+
 
 ## What seemed to be the cause of that perf-issue?
 Quick profiler snapshot of test with Thymeleaf 2.1.4 sayd that most of the time was spent in NestableNode.computeNextChild method. 

@@ -37,7 +37,21 @@
                 <thymeleaf.version>3.0.0-SNAPSHOT</thymeleaf.version>
             </properties>
         </profile>
+
+        <profile>
+            <id>THYMELEAF-3.0.0.BETA01</id>
+            <activation>
+                <property>
+                    <name>thymeleaf</name>
+                    <value>3.0.0.BETA01</value>
+                </property>
+            </activation>
+            <properties>
+                <thymeleaf.version>3.0.0.BETA01</thymeleaf.version>
+            </properties>
+        </profile>
     </profiles>
+
 
     <dependencies>
 
